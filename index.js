@@ -11,7 +11,7 @@ export const io = new Server(httpServer, {
     cors: { origin: '*' }
 });
 
-serialInput.check()
+serialInput.serialParse()
 
 app.use(express.json({limit: '50mb'}))
 app.use(express.urlencoded({extended : true, limit: '50mb'}))

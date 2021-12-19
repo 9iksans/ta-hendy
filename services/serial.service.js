@@ -5,7 +5,7 @@ import * as math from "mathjs";
 
 
 const point = [[1, 1], [5, 1], [5, 5], [1,5]]
-const distance =[1, 3, 5, 4.123105625617661]
+var distance =[0,0,0,0]
 
 export const convertToCoordinate = (distance) => {
     var matrixA = math.matrix([
@@ -49,16 +49,30 @@ export const check = () =>{
 }
 
 
-// console.log("X : " + result._data[0][0]*5 + ", Y: " + result._data[0][1]*5)
+export const serialParse = ()=>{
+    const port = new SerialPort('/dev/cu.usbserial-1430', { baudRate: 9600 });
+    const parser = port.pipe(new Readline({ delimiter: '\n' }));
+    
+    port.on("open", () => {
+        console.log('serial port open');
+    });
+    
+    parser.on('data', data => {
+    
+        data = JSON.parse(data)
+        for (let index = 0; index < data.length; index++) {
+            if(data[index].device === 0){
+                distance[0] = data[index].distance
+            }else if(data[index].device === 1){
+                distance[1] = data[index].distance
+            }else if(data[index].device === 2){
+                distance[2] = data[index].distance
+            }else if(data[index].device === 3){
+                distance[3] = data[index].distance
+            }
+        }
+        console.log(distance)
+        io.sockets.emit('coordinate', convertToCoordinate(distance))
+    });
+}
 
-// const port = new SerialPort('/dev/cu.usbmodem144301', { baudRate: 9600 });
-// const parser = port.pipe(new Readline({ delimiter: '\n' }));
-
-// port.on("open", () => {
-//     console.log('serial port open');
-// });
-
-// parser.on('data', data => {
-//     data = JSON.parse(data)
-//     console.log(data)
-// });
