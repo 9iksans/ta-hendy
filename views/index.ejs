@@ -3,28 +3,50 @@
 <script src="https://cdn.socket.io/4.4.0/socket.io.min.js" integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj" crossorigin="anonymous"></script>
 <body>
 
-<canvas id="myCanvas" width="500" height="500" style="border:1px solid #d3d3d3;">
+<canvas id="myCanvas" width="650" height="650" style="border:1px solid #d3d3d3;">
+<img id="carte" src="/img/hendy.png" style="width:500" hidden >
 Your browser does not support the HTML5 canvas tag.</canvas>
 
 <script>
 const socket = io("/");
+var flag = false
+function draw(coordinate) {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
 
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.beginPath();
-ctx.lineWidth = 10
-ctx.lineTo(200,200);
-ctx.stroke();
+    if(flag == false) {
+        ctx.moveTo(40 + (coordinate[0][0]*100) ,580-(coordinate[0][1]*100)) // 40 + x ; 580 - y
+        flag = true
+        console.log(coordinate[0][0])
+    }else{
+        ctx.lineWidth = 3
+        ctx.lineTo(40 + (coordinate[0][0]*100) ,580-(coordinate[0][1]*100)); // 40 + x ; 580 - y
+        ctx.stroke();
+        console.log(coordinate[0][0])
+    }
+    
+}
+
+function initDraw() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.drawImage( document.getElementById("carte"),10,10)
+   
+}
+
+initDraw();
+draw([[1,2]]);
+draw([[3,4]]);
+draw([[2,1]]);
+
 // ctx.fill()
 
-socket.on('coordinate', (coordinate) => {
-    console.log(coordinate[0])
-    ctx.clearRect(0,0,500,500);
-    ctx.beginPath();
-    ctx.arc(coordinate[0][0]*100, 500-coordinate[0][1]*100, 5, 0, 2 * Math.PI);
-    ctx.stroke();
-    ctx.fill()
-})
+// socket.on('coordinate', (coordinate) => {
+
+//     draw(coordinate);
+   
+// })
 
 
 
