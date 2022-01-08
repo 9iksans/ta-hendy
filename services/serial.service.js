@@ -6,7 +6,7 @@ import KalmanFilter from "kalman-filter";
 
 
 const point = [[0, 0], [5, 0], [5, 5], [0, 5]]
-var distance = [0, 0, 0, 0], kalmanDbmObservation = [[],[],[],[]], kalmanDistanceObservation = [[],[],[],[]]
+var distance = [0, 0, 0, 0], kalmanDbmObservation = [[],[],[],[]], kalmanDistanceObservation = [[],[],[],[]], kalmanCoordinateObservation = []
 
 export const convertToCoordinate = (distance) => {
     var matrixA = math.matrix([
@@ -39,7 +39,16 @@ export const convertToCoordinate = (distance) => {
     var second = math.multiply(matrixATranspose, inverted)
     var result = math.multiply(matrixB, second)
     console.log(result._data)
-    return result._data
+    if(kalmanCoordinateObservation.length == 5){
+        kalmanCoordinateObservation.shift()
+        kalmanCoordinateObservation.push(result._data[0])
+        return coordinateKalman(kalmanCoordinateObservation)
+    }else{
+        console.log(kalmanCoordinateObservation)
+        kalmanCoordinateObservation.push(result._data[0])
+        console.log("Initializing")
+    }
+    
     // console.log(result)
 }
 
@@ -51,7 +60,7 @@ export const check = () => {
 }
 
 const dbmToDistance = (dbm, deviceID) => {
-    var distance = Math.pow(10, (-40.79 + dbm) / 11.542)
+    var distance = Math.pow(10, (-37.591 + dbm) / 15.404)
     console.log("distance sebelum kalman ["+ deviceID +"] : " + distance.toString())
     if(kalmanDistanceObservation[deviceID].length == 5){
         kalmanDistanceObservation[deviceID].shift()
@@ -72,6 +81,16 @@ const dbmKalman = (dbm)=>{
     const res = kFilter.filterAll(dbm)
     //console.log("db sesudah kalman : "+ res[res.length-1][0].toString())
     return res[res.length-1][0]
+}
+
+const coordinateKalman = (coordinate) =>{
+    const kFilter = new KalmanFilter.KalmanFilter({
+        observation: 2,
+        dynamic: 'constant-position'
+    });
+    const res = kFilter.filterAll(coordinate)
+    console.log(res[res.length-1])
+    return [res[res.length-1]]
 }
 
 const sampling = (data)=>{
@@ -162,8 +181,8 @@ export const serialParse = () => {
     });
 
     parser.on('data', data => {
-        //sampling(data)
-        execution(data);
+       //sampling(data)
+       execution(data);
 
     });
 }

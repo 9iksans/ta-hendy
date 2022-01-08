@@ -10,6 +10,14 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 <script>
 const socket = io("/");
 var flag = false
+
+function drawDummy() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    ctx.arc((40 + (2.42*100) ,580-(2.99*100)), 50, 0, 2 * Math.PI);
+}
+
 function draw(coordinate) {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
@@ -36,9 +44,10 @@ function initDraw() {
 }
 
 initDraw();
-draw([[1,2]]);
-draw([[3,4]]);
-draw([[2,1]]);
+drawDummy()
+// draw([[1,2]]);
+// draw([[3,4]]);
+// draw([[2,1]]);
 
 // ctx.fill()
 

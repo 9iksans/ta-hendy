@@ -5,21 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Mazer Admin Dashboard</title>
-    
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    
-<link rel="stylesheet" href="assets/vendors/iconly/bold.css">
+
+    <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
 
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="assets/vendors/fontawesome/all.min.css">
-    <script src="https://cdn.socket.io/4.4.0/socket.io.min.js" integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj" crossorigin="anonymous"></script>
+    <script src="https://cdn.socket.io/4.4.0/socket.io.min.js"
+        integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj"
+        crossorigin="anonymous"></script>
 
 </head>
 
@@ -27,33 +29,32 @@
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
-    <div class="sidebar-header">
-        <div class="d-flex justify-content-between">
-            <div class="logo">
-                <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-title">Menu</li>
+
+                        <li class="sidebar-item active ">
+                            <a href="index.html" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
             </div>
-            <div class="toggler">
-                <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="sidebar-menu">
-        <ul class="menu">
-            <li class="sidebar-title">Menu</li>
-            
-            <li
-                class="sidebar-item active ">
-                <a href="index.html" class='sidebar-link'>
-                    <i class="bi bi-grid-fill"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            
-            
-        </ul>
-    </div>
-    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
-</div>
         </div>
         <div id="main">
             <header class="mb-3">
@@ -61,135 +62,143 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-            
-<div class="page-heading">
-    <h3>Dashboard Statistics</h3>
-</div>
-<div class="page-content">
-    <section class="row">
-        <div class="col-12 col-lg-9">
-            <div class="row">
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon purple">
-                                        <i class="fa fa-map-marker-alt" style="color:white;"></i>
+
+            <div class="page-heading">
+                <h3>Dashboard Statistics</h3>
+            </div>
+            <div class="page-content">
+                <section class="row">
+                    <div class="col-12 col-lg-9">
+                        <div class="row">
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon purple">
+                                                    <i class="fa fa-map-marker-alt" style="color:white;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Anchor A</h6>
+                                                <h6 id="anchor-0" class="font-extrabold mb-0">3.51 Meter</h6>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <h6  class="text-muted font-semibold">Anchor A</h6>
-                                    <h6 id="anchor-0" class="font-extrabold mb-0">Loading...</h6>
+                            </div>
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon blue">
+                                                    <i class="fa fa-map-marker-alt" style="color:white;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Anchor B</h6>
+                                                <h6 id="anchor-1" class="font-extrabold mb-0">3.62 Meter</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon green">
+                                                    <i class="fa fa-map-marker-alt" style="color:white;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Anchor C</h6>
+                                                <h6 id="anchor-2" class="font-extrabold mb-0">3.44 Meter</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon red">
+                                                    <i class="fa fa-map-marker-alt" style="color:white;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Anchor D</h6>
+                                                <h6 id="anchor-3" class="font-extrabold mb-0">2.14 Meter</h6>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon blue">
-                                        <i class="fa fa-map-marker-alt" style="color:white;"></i>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Location Estimation</h4>
                                     </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6  class="text-muted font-semibold">Anchor B</h6>
-                                    <h6 id="anchor-1" class="font-extrabold mb-0">Loading...</h6>
+                                    <div class="card-body">
+                                        <canvas id="myCanvas" width="650" height="650">
+                                            <img id="carte" src="assets/images/samples/grid.png" style="width:500"
+                                                hidden>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
+                    <div class="col-12 col-lg-3">
+                        <div class="card">
+                            <div class="card-body py-4 px-2">
+                                <div class="d-flex align-items-center">
                                     <div class="stats-icon green">
-                                        <i class="fa fa-map-marker-alt" style="color:white;"></i>
+                                        <i class="fa fa-map-pin" style="color:white;"></i>
                                     </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6  class="text-muted font-semibold">Anchor C</h6>
-                                    <h6 id="anchor-2" class="font-extrabold mb-0">Loading...</h6>
+                                    <div class="ms-3 name">
+                                        <h5 class="font-bold">Coordinator Location</h5>
+                                        <h6 id="coordinate-estimation" class="text-muted mb-0">[ 2.25 , 3.05 ]</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon red">
-                                        <i class="fa fa-map-marker-alt" style="color:white;"></i>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Control Panel</h4>
+                            </div>
+                            <div class="card-content pb-4">
+                                <div class="recent-message d-flex px-4 py-3">
+                                    <div class="avatar avatar-lg">
+                                        <img src="assets/images/faces/2.jpg">
+                                    </div>
+                                    <div class="name ms-4">
+                                        <h5 class="mb-1">Hello</h5>
+                                        <h6 class="text-muted mb-0">Hendy!</h6>
                                     </div>
                                 </div>
-                                <div class="col-md-8">
-                                    <h6  class="text-muted font-semibold">Anchor D</h6>
-                                    <h6 id="anchor-3" class="font-extrabold mb-0">Loading...</h6>
+                                <div class="px-4">
+                                    <button onclick="clearDraw()"
+                                        class='btn btn-block btn-xl btn-light-primary font-bold mt-3'>Restart
+                                        Track</button>
+                                </div>
+                                <div class="px-4">
+                                    <button onclick="stopListening()"
+                                        class='btn btn-block btn-xl btn-light-primary font-bold mt-3'>Stop
+                                        Track</button>
                                 </div>
                             </div>
                         </div>
+
                     </div>
-                </div>
+                </section>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Location Estimation</h4>
-                        </div>
-                        <div class="card-body">
-                            <canvas id="myCanvas" width="650" height="650">
-                            <img id="carte" src="assets/images/samples/grid.png" style="width:500" hidden >
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-        <div class="col-12 col-lg-3">
-            <div class="card">
-                <div class="card-body py-4 px-2">
-                    <div class="d-flex align-items-center">
-                        <div class="stats-icon green">
-                            <i class="fa fa-map-pin" style="color:white;"></i>
-                        </div>
-                        <div class="ms-3 name">
-                            <h5 class="font-bold">Coordinator Location</h5>
-                            <h6 id="coordinate-estimation" class="text-muted mb-0">2.2 , 1.2</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <h4>Control Panel</h4>
-                </div>
-                <div class="card-content pb-4">
-                    <div class="recent-message d-flex px-4 py-3">
-                        <div class="avatar avatar-lg">
-                            <img src="assets/images/faces/2.jpg">
-                        </div>
-                        <div class="name ms-4">
-                            <h5 class="mb-1">Hello</h5>
-                            <h6 class="text-muted mb-0">Hendy!</h6>
-                        </div>
-                    </div>
-                    <div class="px-4">
-                        <button onclick="clearDraw()" class='btn btn-block btn-xl btn-light-primary font-bold mt-3'>Restart Track</button>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </section>
-</div>
 
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
@@ -206,83 +215,135 @@
     </div>
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-    
-<script src="assets/js/pages/dashboard.js"></script>
-<script src="assets/vendors/fontawesome/all.min.js"></script>
+
+    <script src="assets/js/pages/dashboard.js"></script>
+    <script src="assets/vendors/fontawesome/all.min.js"></script>
 
 
     <script src="assets/js/mazer.js"></script>
     <script>
         const socket = io("/");
         var flag = false
-
+        var flagStartStop = false
         function draw(coordinate) {
             var c = document.getElementById("myCanvas");
             var ctx = c.getContext("2d");
-        
-            if(flag == false) {
-                ctx.moveTo(40 + (coordinate[0][0]*100) ,580-(coordinate[0][1]*100)) // 40 + x ; 580 - y
+
+            if (flag == false) {
+                ctx.moveTo(40 + (coordinate[0][0] * 100), 580 - (coordinate[0][1] * 100)) // 40 + x ; 580 - y
+                ctx.arc(40 + (coordinate[0][0] * 100), 580 - (coordinate[0][1] * 100), 2, 0, 2 * Math.PI);
                 flag = true
                 console.log(coordinate[0][0])
-            }else{
+
+            } else {
                 ctx.lineWidth = 3
-                ctx.lineTo(40 + (coordinate[0][0]*100) ,580-(coordinate[0][1]*100)); // 40 + x ; 580 - y
-                
+                ctx.lineTo(40 + (coordinate[0][0] * 100), 580 - (coordinate[0][1] * 100)); // 40 + x ; 580 - y\
+                ctx.arc(40 + (coordinate[0][0] * 100), 580 - (coordinate[0][1] * 100), 2, 0, 2 * Math.PI);
+                ctx.lineCap = "round"
+
                 ctx.strokeStyle = '#9694ff'
                 ctx.stroke();
+
+
+
+
                 console.log(coordinate[0][0])
             }
-            
+
         }
-        
+
+        function drawDummy() {
+            var dummyPoint = [
+            [2.42 , 2.99],
+            [2.38 , 3.04],
+            [2.37 , 2.96],
+            [2.48 , 2.92],
+            [2.54 , 2.90],
+            [2.58 , 2.85],
+            [2.51, 2.96],
+            [2.58, 2.87],
+            [2.33, 3,03]
+            ]
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            for (let index = 0; index < dummyPoint.length; index++) {
+                ctx.beginPath();
+                ctx.arc(40 + (dummyPoint[index][0] * 100), 580 - (dummyPoint[index][1] * 100), 3, 0, 2 * Math.PI);
+                ctx.fillStyle = '#9694ff'   
+                ctx.fill();
+            }
+            ctx.beginPath();
+            ctx.arc(40 + (2.5 * 100), 580 - (2.5 * 100), 5, 0, 2 * Math.PI);
+            ctx.fillStyle = '#FF0000'   
+            ctx.fill();
+           
+            
+
+        }
+
         function initDraw() {
             var c = document.getElementById("myCanvas");
             var ctx = c.getContext("2d");
             ctx.beginPath();
-            ctx.drawImage(document.getElementById("carte"),10,10)
+            ctx.drawImage(document.getElementById("carte"), 10, 10)
             return
         }
 
+        function stopListening() {
+            flagStartStop = true
+            // drawDummy()
+        }
+
         function clearDraw() {
+            flagStartStop = false
             var c = document.getElementById("myCanvas");
             var ctx = c.getContext("2d");
             ctx.clearRect(0, 0, 650, 650);
             ctx.beginPath();
-            ctx.drawImage(document.getElementById("carte"),10,10)
+            ctx.drawImage(document.getElementById("carte"), 10, 10)
         }
 
         function coordinateEstimations(coordinate) {
             document.getElementById("coordinate-estimation").innerHTML = "[" + coordinate[0][0].toFixed(2) + ", " + coordinate[0][1].toFixed(2) + "]";
         }
 
-        function displayDistance(distance){
+        function displayDistance(distance) {
             for (let index = 0; index < distance.length; index++) {
                 document.getElementById("anchor-" + index).innerHTML = distance[index].toFixed(2) + " Meter"
             }
         }
-        
-        let myPromise = new Promise(function() {
-            initDraw();
-        });
 
-        draw([[1,2]]);
-        draw([[3,4]]);
-        draw([[2.123123,1.23123132]]);
-        coordinateEstimations([[2.123123,1.23123132]]);
-        displayDistance([1 ,2 ,3, 4])
 
-        
-        // ctx.fill()
-        
-        // socket.on('coordinate', (coordinate) => {
-        
-        //     draw(coordinate);
-           
-        // })
-        
-        
-        
-        </script> 
+        initDraw();
+        drawDummy()
+
+        //draw([[1,2]]);
+        //draw([[3,4]]);
+        //draw([[2.123123,1.23123132]]);
+        //coordinateEstimations([[2.123123,1.23123132]]);
+        //displayDistance([1 ,2 ,3, 4])
+
+
+
+
+        socket.on('coordinate', (coordinate) => {
+            if (flagStartStop == false) {
+                draw(coordinate);
+                coordinateEstimations(coordinate)
+            }
+        })
+
+        socket.on('distance', (distance) => {
+            if (flagStartStop == false) {
+                draw(distance);
+                displayDistance(distance)
+            }
+        })
+
+
+
+
+    </script>
 </body>
 
 </html>
